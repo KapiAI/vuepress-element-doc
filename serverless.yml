@@ -1,0 +1,19 @@
+component: website # (必填) 引用 component 的名称，当前用到的是 tencent-website 组件
+name: element # (必填) 该 website 组件创建的实例名称
+app: element  # (可选) 该 website 应用名称
+stage: pro # (可选) 用于区分环境信息
+
+inputs:
+  src: 
+    src: ./docs/.vuepress # 执行目录路径
+    dist: ./docs/.vuepress/dist # 部署目录路劲
+    index: index.html # 网站主页入口文件
+    error: 404.html # 网站错误入口文件
+    hook: npm run build #  构建命令,在代码上传之前执行
+  region: ap-beijing # 地区
+  protocol: http # 协议
+  bucket: element-website #OSS存储桶名称
+  hosts:
+    - host: element.tanghui.tech
+      async: false # 是否同步等待 CDN 配置。配置为 false 时，参数 autoRefresh 自动刷新才会生效，如果关联多域名时，为防止超时建议配置为 true。
+      autoRefresh: true #开启自动 CDN 刷新，用于快速更新和同步加速域名中展示的站点内容
